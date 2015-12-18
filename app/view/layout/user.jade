@@ -1,0 +1,20 @@
+extends ./common
+block body
+    .row
+        .large-2.columns
+            .sticky
+                img.thumbnail(src="/baidupic/image/h%3D200/sign=d68bcb59d609b3def4bfe368fcbe6cd3/d1160924ab18972b54c26cfbe1cd7b899e510a02.jpg", alt="")
+                ul.menu.vertical
+                    li
+                        a(href=".") 我的主页
+                    li: a(href="./list") 列表
+                    li: a(href="./edit") 上传
+        .large-10.columns
+            nav
+                .breadcrumbs
+                    li
+                        a(href="/") 首页
+                    li
+                        a(href="/user/") 用户中心
+                    li= title
+            block content

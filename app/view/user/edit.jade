@@ -1,0 +1,46 @@
+extends ../layout/user
+block content
+    form(action="upload" method="post" enctype="multipart/form-data")
+        .row
+            .columns.small-3
+                label.text-right 类型
+            .columns.small-9
+                select(name="type")
+                    option(value="0") 布局
+                    option(value="2" selected) 组件
+        .row
+            .columns.small-3
+                label.text-right 名称
+            .columns.small-9
+                input(name="name" type="text" placeholder="名称")
+        .row
+            .columns.small-3
+                label.text-right 模板
+            .columns.small-9
+                input(name="view" type="file")
+                textarea(name="tview")
+        .row
+            .columns.small-3
+                label.text-right js
+            .columns.small-9
+                input(name="script" type="file")
+                textarea(name="tscript")
+        .row
+            .columns.small-3
+                label.text-right 样式
+            .columns.small-9
+                input(name="css" type="file")
+                textarea(name="tcss")
+        .row
+            .columns.small-3
+                label.text-right 资源图片
+            .columns.small-9
+                input(name="image" type="file" )
+        .row
+            .columns.small-3
+                label.text-right 缩略图
+            .columns.small-9
+                input(name="rimage" type="file" multiple)
+        .row
+            .columns.small-offset-3.small-9
+                button.button.expanded 提交

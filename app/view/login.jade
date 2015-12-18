@@ -1,0 +1,20 @@
+extends ./layout/common
+block body
+    form(action="login" method="post")
+        .row
+            .columns.small-3
+                label.text-right 用户名
+            .columns.small-9
+                input(name="name" type="text" placeholder="用户名")
+        .row
+            .columns.small-3
+                label.text-right 密码
+            .columns.small-9
+                input(name="pwd" type="password" placeholder="密码")
+        .row
+            .columns.small-offset-3.small-9
+                button.button.expanded 登录
+        .row
+            .columns.small-offset-3.small-9
+                a.float-right(href="") 忘记密码？
+                a(href="register") 没有账号，去注册

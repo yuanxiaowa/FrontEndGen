@@ -1,0 +1,22 @@
+extends ./layout/common
+block body
+    header.top-bar
+        .top-bar-left
+            ul.menu
+                li.topbar-title Gen
+        .top-bar-right
+            ul.menu
+                if !user
+                    li: a(href="register") 注册
+                    li: a(href="login") 登录
+                else
+                    li: a(href="")= user.name
+                    li: a(href="logout") 登出
+    .row.expanded
+        .large-3
+            ul.accordion(data-accordion)
+                li.accordion-item.is-active
+                    a.accordion-title(href="#") 基本
+                    .accordion-content(data-tab-content) Panel1
+        .large-9
+    footer

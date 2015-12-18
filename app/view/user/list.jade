@@ -1,0 +1,32 @@
+extends ../layout/user
+
+block content
+    table.hover
+        thead
+            tr
+                th(width=200) 标题1
+                th(width=300) 标题2
+        tbody
+            tr
+                td 内容1
+                td 内容2
+            tr
+                td 内容1
+                td 内容2
+            tr
+                td 内容1
+                td 内容2
+            tr
+                td 内容1
+                td 内容2
+    ul.pagination.text-center
+        li.pagination-previous.disabled 上一页
+        li.current 1
+        li
+            a(href="") 2
+        li
+            a(href="") 3
+        li
+            a(href="") 4
+        li.pagination-next
+            a(href="") 下一页

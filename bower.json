@@ -1,0 +1,21 @@
+{
+  "name": "frontendgen",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ody"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/yuanxiaowa/FrontEndGen",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.0.5"
+  }
+}

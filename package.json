@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "node gen routegen",
+    "start": "supervisor app"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,22 @@
   "bugs": {
     "url": "https://github.com/yuanxiaowa/FrontEndGen/issues"
   },
-  "homepage": "https://github.com/yuanxiaowa/FrontEndGen#readme"
+  "homepage": "https://github.com/yuanxiaowa/FrontEndGen#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "compression": "^1.6.0",
+    "connect-mongo": "^0.8.2",
+    "consolidate": "^0.13.1",
+    "cookie-parser": "^1.4.0",
+    "express-session": "^1.12.1",
+    "gulp": "^3.9.0",
+    "gulp-postcss": "^6.0.1",
+    "jade": "^1.11.0",
+    "load-tasks-gulp": "0.0.3",
+    "moment": "^2.10.6",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1",
+    "multiparty": "^4.1.2",
+    "serve-favicon": "^2.3.0"
+  }
 }
