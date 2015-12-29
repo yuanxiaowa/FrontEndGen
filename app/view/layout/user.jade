@@ -1,20 +1,30 @@
 extends ./common
+append head
+    meta(http-equiv="pragma" content="no-cache")
+    meta(http-equiv="Cache-Control" content="no-cache, must-revalidate")
+    meta(http-equiv="expires" content="0")
+append style
+    link(rel="stylesheet", href="/public/css/user.css")
 block body
     .row
-        .large-2.columns
-            .sticky
+        .large-2.columns.sticky-container(data-sticky-container)
+            .sticky(data-sticky)
                 img.thumbnail(src="/baidupic/image/h%3D200/sign=d68bcb59d609b3def4bfe368fcbe6cd3/d1160924ab18972b54c26cfbe1cd7b899e510a02.jpg", alt="")
                 ul.menu.vertical
                     li
-                        a(href=".") 我的主页
-                    li: a(href="./list") 列表
-                    li: a(href="./edit") 上传
+                        a(href="/user") 我的主页
+                    li 组件
+                    li: a(href="/user/list") 列表
+                    li: a(href="/user/edit") 上传
+                    li 接口
+                    li: a(href="/user/interface") 列表
+                    li: a(href="/user/interface/add") 添加
         .large-10.columns
             nav
                 .breadcrumbs
                     li
                         a(href="/") 首页
                     li
-                        a(href="/user/") 用户中心
+                        a(href="/user") 用户中心
                     li= title
             block content

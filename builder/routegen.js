@@ -54,13 +54,13 @@ module.exports = function (rt) {
                 }
                 var _reg = /module\.exports\s*=\s*(\{[^}]*\})/;
                 if (_reg.test(txt)) {
-                    if (tool.rclen(RegExp.$1, ':') != rtxt.length) {
+                    // if (tool.rclen(RegExp.$1, ':') != rtxt.length) {
                         txt = txt.replace(RegExp.$1, tool.beatify(obj));
                         setTimeout(function () {
                             fs.writeFile(stat.path, txt);
                         }, 100);
-                        fs.writeFile(rfile, cInitTxt(name, rtxt.join('')));
-                    }
+                        fs.writeFile(rfile, temp.route(name, rtxt.join('')));
+                    // }
                 }
             })
         } else if (stat.type === 'deleted') {
@@ -88,6 +88,7 @@ function bd(str) {
     if (!('route' in obj)) {
         obj['route'] = '';
     }
+    console.log(obj)
     return obj;
 }
 

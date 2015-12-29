@@ -14,16 +14,16 @@ function controller() {
 
 function schema(name) {
     return 'var Schema = require(\'mongoose\').Schema;\n'
-        + 'var ' + name + 'Schema = new Schema({\n'
+        + 'var ' + tool.camelCase(name) + 'Schema = new Schema({\n'
         + '});\n'
-        + '\nmodule.exports = ' + name + 'Schema;';
+        + '\nmodule.exports = ' + tool.camelCase(name) + 'Schema;';
 }
 
 function model(name) {
     return 'var mongoose = require(\'mongoose\'),\n'
-        + '  ComponentSchema = require(\'../schema/' + name + '\'),\n'
-        + '  ' + tool.fu(name) +' = mongoose.model(\'' + tool.fu(name) +'\', ' + tool.fu(name) +'Schema);\n'
-        + '\nmodule.exports = ' + tool.fu(name) +';';
+        + '  ' + tool.pascalCase(name) + 'Schema = require(\'../schema/' + name + '\'),\n'
+        + '  ' + tool.pascalCase(name) +' = mongoose.model(\'' + tool.pascalCase(name) +'\', ' + tool.pascalCase(name) +'Schema);\n'
+        + '\nmodule.exports = ' + tool.pascalCase(name) +';';
 }
 
 module.exports = {

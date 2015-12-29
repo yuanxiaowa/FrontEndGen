@@ -26,13 +26,16 @@
     "cookie-parser": "^1.4.0",
     "express-session": "^1.12.1",
     "gulp": "^3.9.0",
+    "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^6.0.1",
+    "gulp-util": "^3.0.7",
     "jade": "^1.11.0",
     "load-tasks-gulp": "0.0.3",
     "moment": "^2.10.6",
     "mongoose": "^4.2.9",
     "morgan": "^1.6.1",
     "multiparty": "^4.1.2",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3"
   }
 }

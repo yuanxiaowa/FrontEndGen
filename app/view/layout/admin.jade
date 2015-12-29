@@ -1,3 +1,15 @@
 extends ./common
 block body
-    block content
+    .row
+        .columns.large-3
+            ul.menu.vertical
+                li 用户
+                li
+                    a(href="/admin/user") 列表
+                li 协议
+                li
+                    a(href="/admin/protocal") 列表
+                li
+                    a(href="/admin/protocal/add") 添加
+        .columns.large-9
+            block content

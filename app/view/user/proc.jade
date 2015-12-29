@@ -1,0 +1,26 @@
+extends ../layout/common
+
+block body
+    block content
+        form(method="post" enctype="mutipart/form-data")
+            .row
+                .columns.small-12
+                    textarea(name="name" id="ta")
+            .row
+                .columns.small-12
+                    button.button.expanded 提交
+append script
+    script.
+        $('#ta').keydown(function (e) {
+            if (e.keyCode == 9) {
+                e.preventDefault();
+            }
+        }).keyup(function (e) {
+            if (e.keyCode == 9) {
+                var value = this.value;
+                var pos = this.selectionStart;
+                this.value = value.replace(new RegExp('([\\s\\S]{' + pos + '})'), '$1    ');
+                this.selectionStart = pos + 4;
+                this.selectionEnd = pos + 4;
+            }
+        });

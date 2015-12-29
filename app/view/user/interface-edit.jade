@@ -1,0 +1,79 @@
+extends ../layout/user
+
+block content
+    form(name="form" method="post" action="/user/interface/edit")
+        fieldset.fieldset
+            legend 全局
+            if item._id
+                input(name="item[_id]" value=item._id type="hidden")
+            .row
+                .columns.small-3
+                    label.text-right 项目名称
+                .columns.small-9
+                    input(name="item[name]" value=item.name type="text" required)
+            .row
+                .columns.small-3
+                    label.text-right 协议
+                .columns.small-9
+                    +select(gprotocals, "item[protocal]", item.protocal)
+            .row
+                .columns.small-3
+                    label.text-right 请求类型
+                .columns.small-9
+                    +select(greqtypes, "item[reqtype]", item.reqtype)
+            .row
+                .columns.small-3
+                    label.text-right 返回类型
+                .columns.small-9
+                    +select(grettypes, "item[rettype]", item.rettype)
+            .row
+                .columns.small-3
+                    label.text-right 项目描述
+                .columns.small-9
+                    textarea(name="item[desc]")= item.desc
+        hr
+        ol#ol
+            each _item,i in item.interfaces
+                li.callout
+                    .close-button &times;
+                    .row
+                        .columns.small-3
+                            label.text-right 接口名称
+                        .columns.small-9
+                            input(name="item[interfaces]["+i+"][name]" type="text" value=_item.name)
+                    .row
+                        .columns.small-3
+                            label.text-right 接口地址
+                        .columns.small-9
+                            input(name="item[interfaces]["+i+"][url]" type="text" value=_item.url)
+                    .row
+                        .columns.small-3
+                            label.text-right 请求方式
+                        .columns.small-9
+                            +select(gmethods, "item[interfaces]["+i+"][method]", _item.method)
+                    .row
+                        .columns.small-3
+                            label.text-right 请求参数
+                        .columns.small-9
+                            textarea(name="item[interfaces]["+i+"][req]")=_item.req
+                    .row
+                        .columns.small-3
+                            label.text-right 返回格式
+                        .columns.small-9
+                            textarea(name="item[interfaces]["+i+"][ret]")=_item.ret
+                    .row
+                        .columns.small-3
+                            label.text-right 路由参数
+                        .columns.small-9
+                            textarea(name="item[interfaces]["+i+"][param]")=_item.param
+
+        .row
+            .columns.small-12
+                button.button#add(type="button") 添加接口
+                label.button 导入
+                    input#file(type="file" accept="text/*")
+        .row
+            .columns.small-offset-3.small-9
+                button.button.expanded 提交
+append script
+    script(src="/public/script/interface.js")

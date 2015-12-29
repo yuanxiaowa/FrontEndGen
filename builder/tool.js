@@ -12,6 +12,31 @@ function fu(str) {
 }
 
 /**
+ * 骆驼命名
+ * @param  {String} str
+ * @return {String}
+ */
+function camelCase(str) {
+    str = str.replace(/^\w/, function (_) {
+        return _.toLowerCase();
+    })
+    return str.replace(/-(\w)/g, function (_, _1) {
+        return _1.toUpperCase();
+    });
+}
+
+/**
+ * pascal命名
+ * @param  {String} str 字符串
+ * @return {String}     
+ */
+function pascalCase(str) {
+    return str.replace(/(?:^|-)(\w)/g, function (_, _1) {
+        return _1.toUpperCase();
+    });
+}
+
+/**
  * 计算字符串中某个字符的个数
  * @param  {String} str 字符串
  * @param  {Char} c   字符
@@ -82,6 +107,8 @@ function recurFind(name, dir, cb) {
 
 module.exports = {
   fu: fu,
+  camelCase: camelCase,
+  pascalCase: pascalCase,
   rclen: rclen,
   exists: exists,
   beatify: beatify,

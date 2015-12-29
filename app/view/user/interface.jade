@@ -1,0 +1,37 @@
+extends ../layout/user
+
+block content
+    table.hover
+        thead
+            tr
+                th(width=200) 项目名
+                th(width=200) 协议
+                th 操作
+        tbody
+            each item in items
+                tr
+                    td= item.name
+                    td= item.protocal
+                    td
+                        a.button.tiny(href="interface/#{item._id}") 查看
+                        a.button.tiny(href="interface/edit/#{item._id}") 编辑
+                        a.button.tiny.alert(data-id="#{item._id}") 删除
+                        a.button.tiny.warning(href="" target="_blank" download=item.name+'.zip') 生成文档
+append script
+    script.
+        $('table').on('click', '.alert', function () {
+            var self = $(this);
+            $.ajax({
+                method: 'delete',
+                url: 'interface/del',
+                data: {_id: self.data('id')}
+            })
+            .success(function (b) {
+                if (b) {
+                    self.closest('tr').remove();
+                } else {
+                    alert('删除失败')
+                }
+            });
+        });
+    

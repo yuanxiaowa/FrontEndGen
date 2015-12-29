@@ -1,0 +1,81 @@
+extends ../layout/user
+
+block content
+    
+    form.row(method="post")
+        .columns.large-9
+            fieldset.fieldset
+                legend 配置
+                .row
+                    .columns.large-3
+                        label.text-right 服务器地址
+                    .columns.large-9
+                        input#server(name="server" type="text" required)
+                .row
+                    .columns.large-3
+                        label.text-right 端口
+                    .columns.large-9
+                        input#port(name="port" type="number" min="1" max="65535" value="80")
+                .row
+                    .columns.large-3
+                        label.text-right 目录
+                    .columns.large-9
+                        input#path(name="path" type="text")
+                .row
+                    .columns.small-offset-3.small-9
+                        button.button.expanded 保存配置
+            p.text-right
+                a(data-toggle="panel") 全局说明
+            .callout#panel(data-toggler=".hide")
+                .row
+                    .columns.large-3
+                        label.text-right 协议
+                    .columns.large-9.js-interface-protocal= gprotocals[item.protocal]
+                .row
+                    .columns.large-3
+                        label.text-right 请求格式
+                    .columns.large-9.js-interface-reqtype= greqtypes[item.reqtype]
+                .row
+                    .columns.large-3
+                        label.text-right.js-interface-rettype 返回格式
+                    .columns.large-9= grettypes[item.rettype]
+            h4 接口列表
+            ul.accordion(data-accordion data-allow-all-closed="true" data-multi-expand="true")
+                each _item,i in item.interfaces
+                    li.accordion-item(class={"is-active":!i} id="panel"+i)
+                        a.accordion-title= _item.name
+                        .accordion-content(data-tab-content)
+                            .row
+                                .columns.large-3
+                                    label.text-right url
+                                .columns.large-9
+                                    a.js-interface-url(href=_item.url)= _item.url
+                            .row
+                                .columns.large-3
+                                    label.text-right 方式
+                                .columns.large-9.js-interface-method= gmethods[_item.method]
+                            .row
+                                .columns.large-3
+                                    label.text-right 路由参数
+                                .columns.large-9
+                                    textarea.js-interface-param
+                            .row
+                                .columns.large-3
+                                    label.text-right 请求数据
+                                .columns.large-9
+                                    textarea.js-interface-req
+                            .row
+                                button.button.float-right.js-action(type="button") 执行
+                            hr
+                            .row
+                                .columns.large-3
+                                    label.text-right 执行结果
+                                .columns.large-9
+        .columns.large-3.sticky-container(data-sticky-container)
+            .sticky(data-sticky)
+                ul.menu.vertical
+                    each _item,i in item.interfaces
+                        li: a(href="#panel"+i)= _item.name
+
+append script
+    script(src="/public/script/interface-action.js")

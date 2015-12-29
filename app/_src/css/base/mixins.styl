@@ -1,0 +1,77 @@
+// 元素居中
+center()
+    if !arguments[1]
+        position absolute
+    else
+        position arguments[1]
+    if arguments[0] == 'x'
+        left 50%
+        transform translate(-50%, 0)
+    else if arguments[0] == 'y'
+        top 50%
+        transform translate(0, -50%)
+    else
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+
+// 方形
+square()
+    width arguments
+    height @width  
+
+rem()
+    return 0 if arguments[0] == 0
+    return 1rem if !arguments[0]
+    return (arguments[0] / $ps-s)rem (arguments[1] / $ps-s)rem if (arguments[1])
+    return (arguments[0] / $ps-s)rem
+
+em()
+    return 0 if arguments[0] == 0
+    return 1em if !arguments[0]
+    return 1px if arguments[0] <= 1 && arguments[0] >=0
+    return (arguments[0] / arguments[1])em if arguments[1]
+    return (arguments[0] / $ps-s)em
+    
+p()
+    return (arguments[0] / $ps-s) if !arguments[1]
+    return (arguments[0] / arguments[1])
+
+per()
+    return 100% if !arguments[0]
+    return (arguments[0] / arguments[1] * 100%) if arguments[1]
+    return (arguments[0] / $ps-w * 100%)
+    
+circle()
+    border-radius 50%
+
+ellipsis()
+    overflow hidden
+    text-overflow ellipsis
+    if arguments
+        display -webkit-box
+        -webkit-line-clamp arguments[1] ? arguments[1] : 2
+        -webkit-box-orient vertical
+    else
+        white-space nowrap
+full(a)
+    position absolute
+    if a != t
+        bottom 0
+    if a != l
+        right 0
+    if a != b
+        top 0
+    if a != r
+        left 0
+url(u)
+    $url = u
+    unless match('\.\w+$', u)
+        $url = s($url + '.png')
+    unless match('^(http:/|/|\.)', u)
+        $url = s('../image/' + $url)
+    return s('url("%s")', $url)
+overflow(a)
+    overflow a
+    if a == auto
+        -webkit-overflow-scrolling touch

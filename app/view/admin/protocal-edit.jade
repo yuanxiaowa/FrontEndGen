@@ -1,0 +1,12 @@
+extends ../layout/admin
+
+block content
+    form(action="/admin/protocal/add" method="post")
+        .row
+            .columns.large-3
+                label.text-right 名称
+            .columns.large-9
+                input(name="protocal[name]" type="text" required)
+        .row
+            .columns.large-offset-3.large-9
+                button.button.expanded 提交

@@ -17,7 +17,7 @@ var pipeStream = require('./app/plugin/pipe-stream');
 
 var mongoose = require('mongoose');
 
-var dbUrl = 'mongodb://10.0.0.112/myproject';
+var dbUrl = 'mongodb://10.0.0.181/myproject';
 
 // 数据库
 mongoose.connect(dbUrl);
@@ -31,6 +31,10 @@ db.once('open', function(cb) {
 
 
 app.locals.moment = moment;
+app.locals.gprotocals = ['http', 'https'];
+app.locals.greqtypes = ['application/x-www-form-urlencoded', 'multipart/form-data', 'text/plain'];
+app.locals.grettypes = ['application/json', 'text/plain', 'text/html'];
+app.locals.gmethods = ['GET','POST','PUT','DELETE','OPTIONS','HEAD','TRACE','CONNECT'];
 
 app.use(logger('dev'));
 // 静态资源
@@ -45,7 +49,7 @@ app.set('views', 'app/view');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 app.use(compression({
     filter: function(req, res) {
@@ -78,6 +82,15 @@ app.use('/baidupic', pipeStream({
     host: 'a.hiphotos.baidu.com',
     path: 'baidupic'
 }));
+
+app.use('/pipe', function (req, res, next) {
+    var _host = req.query.host.split(':');
+    pipeStream({
+        host: _host[0],
+        path: req.query.path,
+        port: _host[1]
+    })(req, res);
+})
 
 // 路由配置
 for (var k in routes) {

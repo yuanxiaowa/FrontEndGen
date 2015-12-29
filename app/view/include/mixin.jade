@@ -1,0 +1,4 @@
+mixin select(items, name, value)
+    select(name=name)&attributes(attributes)
+        each v,k in items
+            option(selected=value==k value=k)= v
